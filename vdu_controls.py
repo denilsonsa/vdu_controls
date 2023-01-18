@@ -546,10 +546,11 @@ class MainWindow(QMainWindow):
     def closeEvent(self, event):
         event.accept()  # let the window close
 
-    def event(self, event: QEvent) -> bool:
-        super().event(event)
-        event.accept()
-        return True
+    # This causes https://github.com/digitaltrails/vdu_controls/issues/38
+    #def event(self, event: QEvent) -> bool:
+    #    super().event(event)
+    #    event.accept()
+    #    return True
 
 
 ts_translations: Mapping[str, str] = {}

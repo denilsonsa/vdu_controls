@@ -328,17 +328,6 @@ class BottomToolBar(QToolBar):
 
         self.addWidget(self.menu_button)
 
-        self.installEventFilter(self)
-
-    def eventFilter(self, target: QObject, event: QEvent) -> bool:
-        super().eventFilter(target, event)
-        # PalletChange happens after the new style sheet is in use.
-        if event.type() == QEvent.PaletteChange:
-            self.refresh_action.setIcon(create_icon_from_svg_bytes(REFRESH_ICON_SOURCE))
-            self.menu_button.setIcon(create_icon_from_svg_bytes(MENU_ICON_SOURCE))
-        event.accept()
-        return True
-
 
 class VduControlsMainPanel(QWidget):
     """GUI for detected VDU's, it will construct and contain a control panel for each VDU."""
